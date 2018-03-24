@@ -1,0 +1,47 @@
+if文
+if 条件; then
+
+fi
+
+if 条件; then
+
+else
+
+fi
+
+処理がない場合は:(ヌルコマンド)を書く
+if 条件; then
+
+else
+:
+fi
+
+str=hoge
+if[ "$str" = yes ]; then
+
+fi
+
+&& コマンド1が成功した場合のみコマンド2を実行する
+コマンド1 && コマンド2
+
+|| コマンド1が失敗した場合のみコマンド2を実行する
+コマンド1 || コマンド2
+
+ファイルが存在しなければ作成する
+file=hoge.txt
+[ -e "$file" ] || touch "${file}"
+
+for文
+for 変数 in list
+do
+
+done
+
+break ループを抜ける
+continue 次の繰り返しに移行
+
+while文
+while コマンド
+do
+
+done
