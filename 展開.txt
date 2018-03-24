@@ -1,0 +1,92 @@
+ブレース展開
+複数文字列を一度に指定
+echo file-{10,11}.txt
+
+連続文字列
+echo file-{5..10}.txt
+//5から10まで
+
+パラメータ展開
+変数が未定義or空文字の場合のデフォルト値
+${hensu:-default}
+
+変数が未定義の場合のデフォルト値
+${hensu-default}
+
+変数が未定義or空文字の場合のデフォルト値代入
+${hensu:=default}
+
+変数が未定義の場合のデフォルト値代入
+${hensu=default}
+
+変数が未定義or空文字の場合エラー
+${hensu:?error msg}
+
+変数が未定義の場合エラー
+${hensu?error msg}
+
+変数の文字列を切り出す
+2文字目から末尾までを切り出す
+echo ${name:1}
+
+末尾2文字を切り出す
+echo ${name:-1}
+
+2文字目から5文字を切り出す
+echo ${name:1:5}
+
+配列の2番目以降を取得
+echo ${#hairetsu[@]:1}
+
+配列の2番目から3つを取得
+echo ${#hairetsu[@]:1:3}
+
+${hensu#パターン}
+前方一致したパターンを取り除いて、残り部分を展開
+${hensu##パターン}
+最長一致
+
+拡張子を取り出す
+file=hoge.java
+echo ${file##*.}
+
+${hensu%パターン}
+後方一致したパターンを取り除いて、残り部分を展開
+${hensu%%パターン}
+最長一致
+
+ファイル名を取り出す
+file=hoge.java
+echo ${file%%*.}
+
+ディレクトリパスを取り出す
+path=/var/log/log.txt
+echo ${path%/*}
+
+変数を置換して展開
+${hensu/パターン/置換文字列}
+file=home.tar.gz
+echo ${file/./_}
+home_tar_gz
+
+すべての.を_に置換
+echo ${file//./_}
+
+.から末尾までを.txtに置換
+echo ${file/.*/.txt}
+
+末尾に一致した場合のみ置換/%
+file1=file.html
+echo ${file/%.html/.bak}
+置換される
+file2=file.html.org
+echo ${fiile2/%.html/.bak}
+file.html.org
+置換されない
+
+コマンド置換
+コマンドを実行した際の出力を文字列に展開
+touch $(date +%Y-%m-%d).txt
+
+知らない機能が働いて意図しない展開がされることがないので
+基本シングルクォートを使ったほうがよい
