@@ -1,0 +1,13 @@
+コマンドのグループ化
+{
+    date
+    echo hoge
+    ls
+} > file.txt
+
+サブシェルで実行される
+(
+    date
+    echo hoge
+    ls
+) > file.txt
